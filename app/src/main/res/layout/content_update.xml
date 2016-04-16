@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".AddActivity"
+    tools:showIn="@layout/activity_update">
+
+
+
+    <ViewAnimator
+        android:layout_width="match_parent"
+        android:id="@+id/viewAnimator"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/my_image_view"
+                android:layout_width="@dimen/error_icon"
+                android:layout_height="@dimen/error_icon"
+                android:layout_centerInParent="true"
+                app:placeholderImage="@drawable/internet"
+                app:placeholderImageScaleType="fitCenter" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/animation_icon"
+                android:layout_width="@dimen/error_icon"
+                android:layout_height="@dimen/error_icon"
+                android:layout_centerInParent="true"
+                app:placeholderImage="@drawable/color_internet"
+                app:placeholderImageScaleType="fitCenter" />
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animation_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/padding_10"
+                android:text="@string/internet_connection"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:typeface="serif" />
+
+
+        </RelativeLayout>
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+
+    </ViewAnimator>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_shadow" />
+
+</RelativeLayout>

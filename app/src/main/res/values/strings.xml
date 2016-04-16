@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Social chat</string>
+    <string name="title_activity_login">Social chat</string>
+    <string name="title_activity_sign_up">Registration</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_name">Social chat name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_sign_up_call">New user in Social chat?</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up_short">Cadastro</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="atualizar">Add</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_update">Add user</string>
+    <string name="conversation">conversation</string>
+    <string name="send_message">Send message</string>
+    <string name="table_name" formatted="false">%1s&amp;%1s</string>
+    <string name="online">online</string>
+    <string name="typing">typing...</string>
+    <string name="internet_connection">Internet Connection Error.</string>
+    <string name="reg_suc">Registration success.</string>
+
+</resources>

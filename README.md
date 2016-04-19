@@ -18,7 +18,9 @@ https://github.com/PankajSavaliyaGit/SocialChat
 ##How to use
 
 *1st  http://www.firebase.com/ and create a account and application
+
 *2nd  DashBoard > Simulator > SIMULATE READ AND WRITE OPERATIONS AS YOUR USER: > Copy that URL
+
 *3rd  Go to LibraryClass.java class and set a link.
 
 We are still in development mode  to make this app use full to all developers.

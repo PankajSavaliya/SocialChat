@@ -15,6 +15,12 @@ https://github.com/PankajSavaliyaGit/SocialChat
 
 [https://play.google.com/store/apps/details?id=com.socialinfotech.socialchat&hl=en](url)
 
+##How to use
+
+*1st  http://www.firebase.com/ and create a account and application
+*2nd  DashBoard > Simulator > SIMULATE READ AND WRITE OPERATIONS AS YOUR USER: > Copy that URL
+*3rd  Go to LibraryClass.java class and set a link.
+
 We are still in development mode  to make this app use full to all developers.
 ![profile02](https://cloud.githubusercontent.com/assets/13134958/14628086/426e81ea-0618-11e6-847f-2d61b799dce5.png)
 ![sd](https://cloud.githubusercontent.com/assets/13134958/14628090/4cbd2656-0618-11e6-97b9-0c01d761d70d.png)

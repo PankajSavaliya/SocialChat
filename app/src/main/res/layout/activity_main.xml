@@ -34,13 +34,14 @@
             android:id="@+id/rv_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_layout" />
+            />
 
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/top_shadow" />
+            android:background="@drawable/top_shadow"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

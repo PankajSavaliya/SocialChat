@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     android:fitsSystemWindows="true"
     tools:context=".AddActivity">
 
@@ -42,34 +43,38 @@
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#eeeeee"
-
-            android:padding="@dimen/padding_5">
+            android:layout_alignParentBottom="true">
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_margin="@dimen/margin_5"
                 android:layout_toLeftOf="@+id/button"
-                android:background="@null"
+                android:background="@drawable/send_edt"
                 android:hint="@string/send_message"
-                android:padding="@dimen/padding_5" />
+                android:padding="@dimen/padding_15" />
 
-            <Button
+            <RelativeLayout
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/send_btn"
+                android:layout_height="@dimen/send_btn"
                 android:layout_alignParentRight="true"
-                android:text="Send" />
+                android:layout_marginRight="@dimen/margin_5"
+                android:layout_marginTop="@dimen/margin_5"
+                android:background="@drawable/circle_selector"
+                android:clickable="true"
+                android:padding="@dimen/padding_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_send_white" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/bottom_layout"
-            android:background="@drawable/drawer_shadow" />
 
         <ImageView
             android:layout_width="match_parent"

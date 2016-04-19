@@ -14,7 +14,7 @@ public final class LibraryClass {
 
     public static Firebase getFirebase(){
         if( firebase == null ){
-            firebase = new Firebase("https://firebaseio.com");
+            firebase = new Firebase("https://socialinfotech.firebaseio.com");
         }
 
         return( firebase );

@@ -15,4 +15,5 @@
     <dimen name="margin_25">25dp</dimen>
     <dimen name="margin_30">30dp</dimen>
     <dimen name="error_icon">60dp</dimen>
+    <dimen name="send_btn">50dp</dimen>
 </resources>

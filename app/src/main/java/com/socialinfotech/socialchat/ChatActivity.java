@@ -10,8 +10,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -37,7 +37,7 @@ public class ChatActivity extends AppCompatActivity {
     private String user_id;
     private String table_name;
     private EditText editText;
-    private Button send_button;
+    private RelativeLayout send_button;
     Firebase receiver_firbase, sender_firebase;
     static boolean active = false;
 
@@ -133,7 +133,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void Starting() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        send_button = (Button) findViewById(R.id.button);
+        send_button = (RelativeLayout) findViewById(R.id.button);
         editText = (EditText) findViewById(R.id.editText);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -258,10 +258,10 @@ public class ChatActivity extends AppCompatActivity {
                 final UserMsgHolder userViewHolder,
                 final message user, final int i) {
             if (getRef(i).getAuth().getUid().equals(user.getSender())) {
-                userViewHolder.chatText.setBackgroundResource(R.drawable.bubble_a);
+                userViewHolder.chatText.setBackgroundResource(R.drawable.outgoing);
                 userViewHolder.singleMessageContainer.setGravity(Gravity.RIGHT);
             } else {
-                userViewHolder.chatText.setBackgroundResource(R.drawable.bubble_b);
+                userViewHolder.chatText.setBackgroundResource(R.drawable.incoming);
                 userViewHolder.singleMessageContainer.setGravity(Gravity.LEFT);
             }
             userViewHolder.chatText.setText(user.getMessage());

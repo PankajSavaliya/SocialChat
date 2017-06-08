@@ -13,7 +13,7 @@ Social chat provides you perfect solution for making your app like whatsapp in t
 You can find the project on Github:
 https://github.com/PankajSavaliyaGit/SocialChat
 
-[https://play.google.com/store/apps/details?id=com.socialinfotech.socialchat&hl=en](url)
+https://play.google.com/store/apps/details?id=com.socialinfotech.socialchat&hl=en
 
 ##How to use
 

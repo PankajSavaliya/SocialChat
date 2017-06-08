@@ -2,8 +2,11 @@ package com.socialinfotech.socialchat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +27,13 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.firebase.ui.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.socialinfotech.socialchat.adapter.UserViewHolder;
 import com.socialinfotech.socialchat.domain.AddUserData;
 import com.socialinfotech.socialchat.domain.User;
@@ -53,7 +63,7 @@ public class AddActivity extends AppCompatActivity {
     private User own_user;
     private List<AddUserData> addUserDatas = new ArrayList<AddUserData>();
     private UserAdapter userAdapter;
-
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +74,16 @@ public class AddActivity extends AppCompatActivity {
         animationIcon.startAnimation(myFadeInAnimation);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        firebase = LibraryClass.getFirebase().child("users");
-        firebase = firebase.child(firebase.getAuth().getUid());
+
+        try {
+
+            firebase = LibraryClass.getFirebase().child("users");
+            firebase = firebase.child(firebase.getAuth().getUid());
+        } catch (Exception e) {
+            Intent intent = new Intent(AddActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
 
         firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -85,6 +103,40 @@ public class AddActivity extends AppCompatActivity {
         });
 
 
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7100319741895489~8608453659");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+        requestNewInterstitial();
+
+    }
+
+    private void requestNewInterstitial() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-7100319741895489/9526783655");
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                openAd();
+            }
+        });
+    }
+
+
+
+    private void openAd() {
+        //ads load
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
     }
 
     private void init() {
@@ -93,6 +145,10 @@ public class AddActivity extends AppCompatActivity {
         Log.e("adaoter", "in");
         userAdapter = new UserAdapter();
         rvUsers.setAdapter(userAdapter);
+        if (getArray().size() > 0) {
+            userAdapter.addData(getArray());
+            viewAnimator.setDisplayedChild(2);
+        }
         final Firebase firebase = LibraryClass.getFirebase().child("users");
         firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -110,7 +166,11 @@ public class AddActivity extends AppCompatActivity {
 
                     }
                     viewAnimator.setDisplayedChild(2);
-                    userAdapter.addData(addUserDatas);
+                    if (getArray().size() == 0) {
+                        userAdapter.addData(addUserDatas);
+                    }
+                    saveArray(addUserDatas);
+
 
                 }
             }
@@ -123,12 +183,34 @@ public class AddActivity extends AppCompatActivity {
         });
 
 
-//        adapter = new UserRecyclerAdapter(
-//                User.class,
-//                R.layout.raw_adduser,
-//                UserViewHolder.class,
-//                firebase);
-//        rvUsers.setAdapter(adapter);
+    }
+
+
+
+
+    private void saveArray(List<AddUserData> addUserDatas) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor prefsEditor = sp.edit();
+        Gson gson = new Gson();
+        String jsonText = gson.toJson(addUserDatas);
+        prefsEditor.putString("key", jsonText);
+        prefsEditor.commit();
+    }
+
+    private List<AddUserData> getArray() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+        Gson gson = new Gson();
+        String jsonText = sp.getString("key", null);
+        List<AddUserData> httpParamList =
+                new Gson().fromJson(jsonText, new TypeToken<List<AddUserData>>() {
+                }.getType());
+        if (httpParamList == null) {
+            return new ArrayList<AddUserData>();
+        } else {
+            return httpParamList;
+        }
+
     }
 
     @Override

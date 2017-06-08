@@ -9,11 +9,12 @@
     tools:showIn="@layout/activity_update">
 
 
-
     <ViewAnimator
-        android:layout_width="match_parent"
         android:id="@+id/viewAnimator"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/adView">
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -57,7 +58,6 @@
         </RelativeLayout>
 
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_users"
             android:layout_width="match_parent"
@@ -68,9 +68,17 @@
 
 
     </ViewAnimator>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/top_shadow" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-7100319741895489/6573317257" />
 </RelativeLayout>

@@ -34,7 +34,7 @@
             android:id="@+id/rv_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:layout_above="@+id/adView" />
 
 
         <ImageView
@@ -42,6 +42,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/top_shadow"
             tools:ignore="ContentDescription" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-7100319741895489/9666384458" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

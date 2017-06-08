@@ -15,6 +15,9 @@ import android.view.View;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
 import com.firebase.ui.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.appindexing.Thing;
 import com.socialinfotech.socialchat.adapter.UserConversationHolder;
 import com.socialinfotech.socialchat.domain.chat.conversation;
@@ -53,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         AppIndexing();
 
-
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7100319741895489~8608453659");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
 
@@ -102,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
+
+
         }
 
         return super.onOptionsItemSelected(item);

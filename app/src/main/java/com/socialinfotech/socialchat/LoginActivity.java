@@ -14,6 +14,9 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.socialinfotech.socialchat.domain.User;
 import com.socialinfotech.socialchat.domain.util.LibraryClass;
 
@@ -41,6 +44,10 @@ public class LoginActivity extends AppCompatActivity {
 
         firebase = LibraryClass.getFirebase();
         verifyUserLogged();
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-7100319741895489~8608453659");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
 
